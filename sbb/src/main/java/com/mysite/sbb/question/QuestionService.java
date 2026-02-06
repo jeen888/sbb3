@@ -52,7 +52,9 @@ public class QuestionService {
 
 	public Page<Question> getList(int page, String kw) {
 		List<Sort.Order> sorts = new ArrayList<>();
-		sorts.add(Sort.Order.desc("createDate"));
+		// sorts.add(Sort.Order.desc("createDate"));
+		// sorts.add(Sort.Order.desc("id"));
+		sorts.add(Sort.Order.desc("subject"));
 		Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
 		return this.questionRepository.findAllByKeyword(kw, pageable);
 	}
@@ -89,5 +91,13 @@ public class QuestionService {
 	public void vote(Question question, SiteUser siteUser) {
 		question.getVoter().add(siteUser);
 		this.questionRepository.save(question);
+	}
+
+	public int findAllCount() {
+		return (int) this.questionRepository.count();
+	}
+
+	public Optional<Question> findById(int id) {
+		return this.questionRepository.findById(id);
 	}
 }

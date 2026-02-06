@@ -18,11 +18,15 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	// developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	compileOnly 'org.projectlombok:lombok' 
 	annotationProcessor 'org.projectlombok:lombok'
+	testCompileOnly 'org.projectlombok:lombok' 
+	testAnnotationProcessor 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	// JDBC 로깅, resultset 출력 가능
+	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
 	testImplementation 'org.junit.jupiter:junit-jupiter' 
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
@@ -37,3 +41,12 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+// test {
+// 	useJUnitPlatform()
+
+// 	// 테스트 실행 시 콘솔에 출력 내용을 표시하도록 설정
+//     testLogging {
+//         showStandardStreams = true
+//     }
+// }

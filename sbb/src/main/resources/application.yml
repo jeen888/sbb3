@@ -1,0 +1,42 @@
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  datasource:
+    url: jdbc:log4jdbc:h2:~/local;AUTO_SERVER=TRUE
+    # driverClassName: org.h2.Driver
+    driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
+        show_sql: true
+    mapping-resources:  # src/main/resources/
+      - "META-INF/test-Question.xml"
+    #   - "jpa-queries-order.properties"
+    #   - "jpa-queries-product.properties"        
+#   devtools:
+#     restart:
+#       enabled: true
+#       poll-interval: 1s
+#       quite-period: 400ms
+
+logging:
+  level:
+    # SQL 쿼리 문장 표시
+    jdbc.sqltiming: info
+    # 파라미터가 바인딩된 결과 표시
+    jdbc.audit: off
+    # ResultSet을 제외한 결과 표시 (너무 많을 수 있으니 보통 off)
+    jdbc.resultset: off
+    # 핵심! ResultSet을 테이블(표) 형태로 표시
+    jdbc.resultsettable: info
+    # 커넥션 열고 닫는 로그 (불필요하면 off)
+    jdbc.connection: off
+    jdbc.sqlonly: off

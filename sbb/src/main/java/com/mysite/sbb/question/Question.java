@@ -42,7 +42,7 @@ public class Question {
 	private SiteUser author;
 
 	private LocalDateTime modifyDate;
-	
+
 	@ManyToMany
-    Set<SiteUser> voter;
+	Set<SiteUser> voter;
 }
