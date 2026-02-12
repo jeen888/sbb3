@@ -51,11 +51,12 @@ public class QuestionService {
 	}
 
 	public Page<Question> getList(int page, String kw) {
-		List<Sort.Order> sorts = new ArrayList<>();
-		// sorts.add(Sort.Order.desc("createDate"));
+		// List<Sort.Order> sorts = new ArrayList<>();	// 정상 동작 안하는 듯.
+		// sorts.add(Sort.Order.desc("createDate")); // 쿼리에서 처리
 		// sorts.add(Sort.Order.desc("id"));
-		sorts.add(Sort.Order.desc("subject"));
-		Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
+		// sorts.add(Sort.Order.desc("subject"));
+		// Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
+		Pageable pageable = PageRequest.of(page, 10);
 		return this.questionRepository.findAllByKeyword(kw, pageable);
 	}
 

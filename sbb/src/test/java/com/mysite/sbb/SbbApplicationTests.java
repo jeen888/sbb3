@@ -35,9 +35,9 @@ class SbbApplicationTests {
     private AnswerRepository answerRepository;
 
     // @Test
-    @DisplayName("JPA 테스트를 위한 더미 데이터 100개 생성")
+    @DisplayName("JPA 테스트를 위한 더미 데이터 생성")
     void testJpa() {
-        for (int i = 1; i <= 100; i++) {
+        for (int i = 101; i <= 1024; i++) {
             String subject = String.format("테스트 데이터입니다:[%03d]", i);
             String content = "내용무 " + i;
             this.questionService.create(subject, content, null);

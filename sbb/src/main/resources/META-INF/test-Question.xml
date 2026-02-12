@@ -14,19 +14,21 @@
     <named-query name="Question.findAllByKeyword">
         <query>
             select
-                distinct q
-                from Question q
-                left outer join SiteUser u1 on q.author=u1
-                left outer join Answer a on a.question=q
-                left outer join SiteUser u2 on a.author=u2
-                where 1=1
-                    and (q.subject like concat('%', :kw, '%')
-                        or q.content like concat('%', :kw, '%')
-                        or u1.username like concat('%', :kw, '%')
-                        or a.content like concat('%', :kw, '%')
-                        or u2.username like concat('%', :kw, '%')
-                    )
+            distinct q
+            from Question q
+            left outer join SiteUser u1 on q.author=u1
+            left outer join Answer a on a.question=q
+            left outer join SiteUser u2 on a.author=u2
+            where 1=1
+                and (q.subject like concat('%', :kw, '%')
+                    or q.content like concat('%', :kw, '%')
+                    or u1.username like concat('%', :kw, '%')
+                    or a.content like concat('%', :kw, '%')
+                    or u2.username like concat('%', :kw, '%')
+                )
+            order by q.createDate desc
         </query>
+        <!-- limit 안 걸어도 되나? -->
     </named-query>
 
 </entity-mappings>
