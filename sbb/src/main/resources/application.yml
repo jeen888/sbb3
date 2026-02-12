@@ -30,6 +30,9 @@ spring:
 # 타임리프 캐시 끄기 (개발 중에만 사용)
 spring.thymeleaf.cache: false
 
+# 가상 스레드 활성화 JDK 21+
+spring.threads.virtual.enabled: true
+
 logging:
   level:
     # SQL 쿼리 문장 표시

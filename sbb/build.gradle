@@ -1,52 +1,157 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '3.2.1'
-	id 'io.spring.dependency-management' version '1.1.4'
+    id 'java'
+    id 'org.springframework.boot' version '3.5.0'
+    id 'io.spring.dependency-management' version '1.1.7'
 }
 
 group = 'com.mysite'
 version = '0.0.2'
 
 java {
-	sourceCompatibility = '19'
+    // [수정] JDK 21로 변경 (LTS 버전으로 호환성이 가장 뛰어납니다)
+    sourceCompatibility = '21'
+    targetCompatibility = '21'
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	// developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	compileOnly 'org.projectlombok:lombok' 
-	annotationProcessor 'org.projectlombok:lombok'
-	testCompileOnly 'org.projectlombok:lombok' 
-	testAnnotationProcessor 'org.projectlombok:lombok'
-	runtimeOnly 'com.h2database:h2'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	// JDBC 로깅, resultset 출력 가능
-	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
-	testImplementation 'org.junit.jupiter:junit-jupiter' 
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
-	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
-	implementation 'org.commonmark:commonmark:0.21.0'
-	runtimeOnly 'org.postgresql:postgresql'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    
+    compileOnly 'org.projectlombok:lombok' 
+    annotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok' 
+    testAnnotationProcessor 'org.projectlombok:lombok'
+    
+    runtimeOnly 'com.h2database:h2'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
+    
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+    
+    implementation 'org.commonmark:commonmark:0.24.0'
+    
+    runtimeOnly 'org.postgresql:postgresql'
 }
 
 tasks.named('test') {
-	useJUnitPlatform()
+    useJUnitPlatform()
+    testLogging {
+        showStandardStreams = true
+    }
 }
 
-// test {
-// 	useJUnitPlatform()
+// plugins {
+//     id 'java'
+//     // [체크 1] 스프링 부트 버전을 3.5.0 (최신 안정화 버전)으로 업데이트
+//     id 'org.springframework.boot' version '3.5.0'
+//     // [체크 2] 의존성 관리 플러그인 버전 업데이트
+//     id 'io.spring.dependency-management' version '1.1.7'
+// }
 
-// 	// 테스트 실행 시 콘솔에 출력 내용을 표시하도록 설정
+// group = 'com.mysite'
+// version = '0.0.2'
+
+// java {
+//     // [체크 3] 소스 및 대상 호환성을 JDK 24로 변경
+//     sourceCompatibility = '24'
+//     targetCompatibility = '24'
+// }
+
+// repositories {
+//     mavenCentral()
+// }
+
+// dependencies {
+//     implementation 'org.springframework.boot:spring-boot-starter-web'
+//     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    
+//     compileOnly 'org.projectlombok:lombok' 
+//     annotationProcessor 'org.projectlombok:lombok'
+//     testCompileOnly 'org.projectlombok:lombok' 
+//     testAnnotationProcessor 'org.projectlombok:lombok'
+    
+//     runtimeOnly 'com.h2database:h2'
+//     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+//     implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
+    
+//     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+//     implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+//     implementation 'org.springframework.boot:spring-boot-starter-validation'
+//     implementation 'org.springframework.boot:spring-boot-starter-security'
+//     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+    
+//     // [체크 4] Commonmark 버전 업데이트 (최신 자바 호환성 유지)
+//     implementation 'org.commonmark:commonmark:0.24.0'
+    
+//     runtimeOnly 'org.postgresql:postgresql'
+// }
+
+// tasks.named('test') {
+//     useJUnitPlatform()
+//     // [참고] 테스트 시 로그 출력 설정 (필요시 주석 해제)
 //     testLogging {
 //         showStandardStreams = true
 //     }
 // }
+
+
+// plugins {
+// 	id 'java'
+// 	id 'org.springframework.boot' version '3.2.1'
+// 	id 'io.spring.dependency-management' version '1.1.4'
+// }
+
+// group = 'com.mysite'
+// version = '0.0.2'
+
+// java {
+// 	sourceCompatibility = '19'
+// }
+
+// repositories {
+// 	mavenCentral()
+// }
+
+// dependencies {
+// 	implementation 'org.springframework.boot:spring-boot-starter-web'
+// 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+// 	// developmentOnly 'org.springframework.boot:spring-boot-devtools'
+// 	compileOnly 'org.projectlombok:lombok' 
+// 	annotationProcessor 'org.projectlombok:lombok'
+// 	testCompileOnly 'org.projectlombok:lombok' 
+// 	testAnnotationProcessor 'org.projectlombok:lombok'
+// 	runtimeOnly 'com.h2database:h2'
+// 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+// 	// JDBC 로깅, resultset 출력 가능
+// 	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
+// 	testImplementation 'org.junit.jupiter:junit-jupiter' 
+// 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+// 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+// 	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+// 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+// 	implementation 'org.springframework.boot:spring-boot-starter-security'
+// 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+// 	implementation 'org.commonmark:commonmark:0.21.0'
+// 	runtimeOnly 'org.postgresql:postgresql'
+// }
+
+// tasks.named('test') {
+// 	useJUnitPlatform()
+// }
+
+// // test {
+// // 	useJUnitPlatform()
+
+// // 	// 테스트 실행 시 콘솔에 출력 내용을 표시하도록 설정
+// //     testLogging {
+// //         showStandardStreams = true
+// //     }
+// // }
