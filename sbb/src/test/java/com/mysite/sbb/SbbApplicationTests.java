@@ -37,7 +37,7 @@ class SbbApplicationTests {
     // @Test
     @DisplayName("JPA 테스트를 위한 더미 데이터 생성")
     void testJpa() {
-        for (int i = 101; i <= 1024; i++) {
+        for (int i = 1; i <= 1024; i++) {
             String subject = String.format("테스트 데이터입니다:[%03d]", i);
             String content = "내용무 " + i;
             this.questionService.create(subject, content, null);
@@ -56,7 +56,7 @@ class SbbApplicationTests {
     }
 
     // @Test
-    @DisplayName("쿼리 테스트 - 총 갯수")
+    @DisplayName("쿼리 테스트 - 총 갯수 알아오기")
     void testJpa3() {
         assertEquals(400, this.questionRepository.count());
     }
