@@ -27,6 +27,9 @@ spring:
 #       poll-interval: 1s
 #       quite-period: 400ms
 
+# 타임리프 캐시 끄기 (개발 중에만 사용)
+spring.thymeleaf.cache: false
+
 logging:
   level:
     # SQL 쿼리 문장 표시

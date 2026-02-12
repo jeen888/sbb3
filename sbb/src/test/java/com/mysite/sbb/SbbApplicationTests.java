@@ -35,16 +35,16 @@ class SbbApplicationTests {
     private AnswerRepository answerRepository;
 
     // @Test
-    // @DisplayName("JPA 테스트를 위한 더미 데이터 100개 생성")
+    @DisplayName("JPA 테스트를 위한 더미 데이터 100개 생성")
     void testJpa() {
-        for (int i = 301; i <= 400; i++) {
+        for (int i = 1; i <= 100; i++) {
             String subject = String.format("테스트 데이터입니다:[%03d]", i);
             String content = "내용무 " + i;
             this.questionService.create(subject, content, null);
         }
     }
 
-    @Test
+    // @Test
     @DisplayName("쿼리 테스트 - id=1 게시물의 내용 '내용무'인지 확인")
     void testJpa2() {
         int id = 1;
@@ -55,7 +55,7 @@ class SbbApplicationTests {
         }
     }
 
-    @Test
+    // @Test
     @DisplayName("쿼리 테스트 - 총 갯수")
     void testJpa3() {
         assertEquals(400, this.questionRepository.count());
@@ -75,7 +75,7 @@ class SbbApplicationTests {
         this.answerRepository.save(a);
     }
 
-    @Test
+    // @Test
     @Transactional // 지연 로딩 때문에 필요, JUnit 테스트에서는 N번 쿼리 실행시 끊기기 때문
     @DisplayName("쿼리 테스트 - id=1 질문의 답변 가져오기")
     void testJpa5() {
