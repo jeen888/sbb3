@@ -42,11 +42,20 @@ public class SecurityConfig {
 			)
 			.formLogin(form -> form
 				.loginPage("/user/login")
+				// .defaultSuccessUrl("/success")
 				.defaultSuccessUrl("/")
+				// .failureHandler((request, response, exception) -> {
+				// 	// 실패한 아이디를 세션에 직접 저장
+				// 	request.getSession().setAttribute("username", request.getParameter("username"));
+				// 	response.sendRedirect("/user/login?error");
+				// })
 			)
 			
 			.logout(logout -> logout
 				.logoutUrl("/user/logout") // 경로 지정
+				// 이 부분이 핵심입니다. AntPathRequestMatcher를 쓰면 GET/POST 모두 처리 가능합니다.
+    			// .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
+
 				.logoutSuccessUrl("/")
 				.invalidateHttpSession(true)
 			);

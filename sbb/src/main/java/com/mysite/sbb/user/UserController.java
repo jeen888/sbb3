@@ -2,11 +2,13 @@ package com.mysite.sbb.user;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
@@ -52,4 +54,15 @@ public class UserController {
 	public String login() {
 		return "login_form";
 	}
+
+	// @PostMapping("/login")
+	// public String loginProc(HttpServletRequest request, Model model) {
+	// 	// 세션에서 마지막으로 입력한 username을 가져옴
+	// 	// Object lastUsername = request.getSession().getAttribute("SPRING_SECURITY_LAST_USERNAME");
+	// 	String lastUsername = request.getParameter("username");
+	// 	if (lastUsername != null) {
+	// 		model.addAttribute("username", lastUsername.toString());
+	// 	}
+	// 	return "login_form";
+	// }
 }

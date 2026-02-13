@@ -1,6 +1,6 @@
 <html layout:decorate="~{layout}">
 <div layout:fragment="content" class="container my-3">
-	<form th:action="@{/user/login}" method="post">
+	<form th:action="@{/user/login}" method="post" id="form1">
 		<div th:if="${param.error}">
 			<div class="alert alert-danger">
 				사용자ID 또는 비밀번호를 확인해 주세요.
@@ -8,14 +8,40 @@
 		</div>
 		<div class="mb-3">
 			<label for="username" class="form-label">사용자ID</label>
-			<input type="text" name="username" id="username" class="form-control">
+			<input type="text" name="username" id="username" class="form-control"
+				th:value="${username}" />
 		</div>
 		<div class="mb-3">
 			<label for="password" class="form-label">비밀번호</label>
 			<input type="password" name="password" id="password" class="form-control">
 		</div>
 		<button type="submit" class="btn btn-primary">로그인</button>
+		<!-- <span>사용자: <span th:text="|${session.username} / ${username}|" /></span> -->
 	</form>
 </div>
+
+<script type="text/javascript" layout:fragment="script">
+	// $(() => {
+	// 	const rememberMem=() => {
+	// 		let $form=$('#form1');
+	// 		$form.on('submit', () => {
+	// 			sessionStorage.setItem('username', $('#username').val());
+	// 		});
+	// 		let username=sessionStorage.getItem('username');
+	// 		if (username) {
+	// 			$('#username').val(username);
+	// 			sessionStorage.removeItem('username');
+	// 		}
+	// 	};
+
+	// 	let urlParams=new URLSearchParams(window.location.search);
+	// 	urlParams.has('clear')
+	// 		? sessionStorage.removeItem('username')	// clear파라미터가 있을 경우 세션에서 username제거
+	// 		: rememberMem();
+	// });
+	// 문제점1: 라이브러리 의존성
+	// 문제점2: 로그인 성공시 sessionStorage에 남아있는 username제거 필요
+	// 더 나은 방법: SecurytyConfig에서 직접 세션에 저장하도록 수정 : error
+</script>
 
 </html>

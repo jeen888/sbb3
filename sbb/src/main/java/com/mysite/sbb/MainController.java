@@ -17,4 +17,9 @@ public class MainController {
 	public String root() {
 		return "redirect:/question/list";
 	}
+
+	// @GetMapping("/success")
+	// public String loginok() {
+	// 	return "redirect:/question/list?loginSuccess";	// 로그인 성공 후 세션에 남아있는 username 제거 목적
+	// }
 }

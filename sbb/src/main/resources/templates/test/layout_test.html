@@ -10,13 +10,13 @@
 	<!-- sbb CSS -->
 	<link rel="stylesheet" type="text/css" th:href="@{/style.css}">
 	<title>Hello, sbb!</title>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
 <body>
 	<!-- 네비게이션바 -->
-	<nav th:replace="~{navbar :: navbarFragment}"></nav>
+	<nav th:replace="~{test/navbar_test :: navbarFragment}"></nav>
+	LAYOUT TEST TEMPLATE
+
 	<!-- 기본 템플릿 안에 삽입될 내용 Start -->
 	<th:block layout:fragment="content"></th:block>
 	<!-- 기본 템플릿 안에 삽입될 내용 End -->
@@ -25,6 +25,9 @@
 	<!-- 자바스크립트 Start -->
 	<th:block layout:fragment="script"></th:block>
 	<!-- 자바스크립트 End -->
+
+	<!-- 네비게이션바 테스트 프래그먼트 -->
+	<div th:replace="~{test/navbar_test :: navbarTestFragment}"></div>
 </body>
 
 </html>
