@@ -28,7 +28,17 @@ spring:
 #       quite-period: 400ms
 
 # 타임리프 캐시 끄기 (개발 중에만 사용)
-spring.thymeleaf.cache: false
+  thymeleaf:
+    cache: false
+  devtools:
+      livereload:
+        enabled: true  # LiveReload 기능을 활성화합니다.
+  web:
+    resources:
+      # static-locations: classpath:/static/
+      static-locations: file:src/main/resources/static/
+      cache:
+        period: 0
 
 # 가상 스레드 활성화 JDK 21+
 spring.threads.virtual.enabled: true

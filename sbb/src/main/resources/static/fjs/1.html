@@ -1,0 +1,37 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>TEST</title>
+</head>
+<body>
+   
+<script src="/fjs-lib/test-lib.js"></script>
+<script type="text/javascript">
+    // 1.2.2 for -> filter, if -> predicate
+    var users_under_30=filter(users, user => user.age<30); // filter는 배열을 반환한다. user => user.age<30은 predicate이다.
+    console.log(users_under_30.length); // 2
+    console.log(users.filter(user => user.age<30).length); // 2, ES6에서는 filter, map, reduce가 내장되어 있다.
+
+    
+    // 1-5 for문을 이용한 필터링 : 전통방식
+    // var temp_users=[];
+    // for(var i=0;i<users.length;i++){
+    //     if(users[i].age>=30) {
+    //         temp_users.push(users[i]);
+    //     }
+    // }
+    // console.log(temp_users.length); // 4
+    // var ages=[];
+    // for (var i=0;i<temp_users.length;i++){
+    //     ages.push(temp_users[i].age);
+    // }   
+    // console.log(ages); //
+
+    // 1-1 간단한 클로저 예제
+    // console.log(addMaker(10)(5)); //15
+    // var add5=addMaker(5);
+    // console.log(add5(3)); //8
+    // console.log(add5(4)); //9
+</script>
+</body>
+</html>
