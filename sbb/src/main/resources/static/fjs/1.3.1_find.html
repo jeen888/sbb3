@@ -1,0 +1,17 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>TEST</title>
+</head>
+<body>
+   
+<script src="/fjs-lib/test-lib.js"></script>
+<script type="text/javascript">
+    // 1.2.3 find -> find, some -> predicate
+    var user_under_30=users.find(user => user.age<30); // find는 배열이 아닌 요소 하나를 반환한다. user => user.age<30은 predicate이다.
+    console.log(user_under_30); // {name: 'Hong', age: 20}
+    console.log(users.find(user => user.age<30)); // {name: 'Hong', age: 20}
+    console.log(users.some(user => user.age<30)); // true, some은 배열의 요소 중 하나라도 조건을 만족하는 요소가 있으면 true를 반환한다.
+</script>
+</body>
+</html>
